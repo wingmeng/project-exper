@@ -1,0 +1,36 @@
+.section {
+    display: table;
+    width: 100%;
+	padding: 0 $gutter; 
+	margin: $gutter / 2 auto;
+	box-sizing: border-box;
+
+	+ .section {margin-top: -5px;}
+
+	> * {display: table-cell;}
+	
+	> h2 {
+	    width: 5.5em;
+	    padding: $gutter / 2 0;
+		text-align: right;
+		vertical-align: top;
+		font-size: 14px;
+		font-weight: 700;
+		color: #111;
+		
+		&:after {content: "：";}
+	}
+
+	> .filter-list {
+		padding: $gutter / 2 0 0 $gutter - 5px;
+		
+		&:before,
+		&:after {
+			content: "";
+			clear: both;
+			display: block;
+			height: 0;
+			overflow: hidden;
+		}
+	}
+}

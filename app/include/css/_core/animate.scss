@@ -1,0 +1,5 @@
+.list-fade-enter-active {transition: opacity .5s;}
+.list-fade-leave-active {transition: opacity .3s;}
+
+.list-fade-enter, 
+.list-fade-leave-to {opacity: 0;}

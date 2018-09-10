@@ -1,0 +1,68 @@
+@media screen and (max-width: 600px) {
+	$gutter: 5px;
+	$left-space: 100px;
+	$icon-size: 20px;
+
+	html {font-size: 14px;}
+	body {padding: 0;}
+
+	.main-title {padding: $gutter * 2 0;}
+	.section {padding: 0 $gutter;}
+
+	.project {
+		margin: $icon-size * 3 $gutter $gutter * 2;
+		background-position: ($left-space + $icon-size) 0;
+
+		> h2 {
+			left: $left-space + $gutter * 2 - $icon-size / 2;
+			padding-left: $icon-size * 2 + $gutter * 2;
+		}
+	}
+	
+	.year {
+		width: $left-space;
+		font-size: 1.14285rem;
+	}
+
+	.project-list {
+		> li {
+			// 图标尺寸：12 x 20
+			background-position: ($left-space + $icon-size - 12px / 2 + 1px) 5px;
+
+			> p {
+				width: $left-space - 5px;
+				margin-right: ($left-space + $icon-size) / 2 - $gutter * 2;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 480px) {
+	$left-space: 70px;
+
+	.project {
+		background-position: ($left-space + $icon-size - $gutter) 0;
+
+		> h2 {left: $left-space;}
+	}
+	
+	.year {width: $left-space;}
+
+	.project-list {
+		> li {
+			// 图标尺寸：12 x 20
+			background-position: ($left-space + $icon-size - 12px / 2 - $gutter + 1px) 5px;
+
+			> p {
+				width: $left-space - 5px;
+				margin-right: ($left-space + $icon-size) / 2;
+			}
+		}
+	}
+
+	.project-type {font-size: 12px;}
+
+	.project-info {
+		> dt {float: none;}
+	}
+}

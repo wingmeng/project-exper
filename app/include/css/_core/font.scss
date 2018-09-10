@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+/**
+ * 让 webkit 内核浏览器下的字体边缘更平滑
+ */
+ html {-webkit-font-smoothing: antialiased;}
+
+ /**
+  * 1. 所有 font-family 存在空格的字体名加引号
+  * 2. 防止表单元素中「font-family」不能继承
+  * 3. 西文字体和 OS X 字体写在前面
+  * 4. Opera 12.1 之前版本不支持中文字体的英文名称
+  */
+ body,
+ button,
+ input,
+ select,
+ textarea {
+	 font-family: "Helvetica Neue",  /* Mac OS 默认字体 */
+					Verdana,  /* 广泛使用的西文字体 */
+					Tahoma,  /* 十分常见的无衬线字体，Windows 默认字体 */
+					"Microsoft YaHei",  /* 微软雅黑，Win Vista（及以上）默认字体 */
+					"Noto Sans CJK SC",  /* 思源字体（开源字体） */
+					"WenQuanYi Micro Hei",  /* 文泉驿微米黑 Linux(Ubuntu) 默认字体 */
+					sans-serif;
+	   -ms-text-autospace: ideograph-alpha ideograph-numeric ideograph-parenthesis;
+ }
+ 
+ /**
+  * 统一代码的字体设置
+  * 字体要能明确区分数字 0 和字母 o
+  * Mac 优先使用 Monaco，Windows 优先使用 Consolas
+  * XP自带 Courier New
+  * Windows 7开始自带的 Consolas
+  * Mac上自带的Monaco，Osaka-Mono
+  */
+ code,
+ kbd,
+ pre {
+	   font-family: Monaco, Menlo, Consolas, "Courier New", Courier, Monospace;
+ }

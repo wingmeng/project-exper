@@ -1,0 +1,24 @@
+[
+    {
+		"name": "云管理平台",
+		"tag": "cloud"
+	}, {
+		"name": "Web 软件",
+		"tag": "web"
+	}, {
+		"name": "手机 app",
+		"tag": "app"
+	}, {
+		"name": "微信平台",
+		"tag": "wechat"
+	}, {
+		"name": "团队工具",
+		"tag": "tools"
+	}, {
+		"name": "主控终端屏",
+		"tag": "screen"
+	}, {
+		"name": "单机软件",
+		"tag": "software"
+	}
+]

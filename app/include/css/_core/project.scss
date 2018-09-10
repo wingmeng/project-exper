@@ -1,0 +1,130 @@
+$left-space: 140px !default;
+$icon-size: 40px;
+
+.project {
+	position: relative;
+	padding-bottom: $gutter / 2;
+	margin: $icon-size * 2 $gutter 0;
+	background: url(../images/bg_line.png?__inline) ($left-space + $icon-size) 0 repeat-y;
+
+	> h2 {
+		position: absolute;
+		top: -$icon-size;
+		left: $left-space + $gutter;
+		width: $icon-size;
+		padding-left: $icon-size + $gutter;
+		white-space: nowrap;
+		line-height: $icon-size;
+		font-size: 1.375rem;
+		color: $highlight;
+		background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M512.682 2.846C231.535 2.846 3.528 230.853 3.528 512s228.007 509.154 509.154 509.154S1021.84 793.147 1021.84 512 793.828 2.846 512.681 2.846zm92.717 256.86c12.408 0 22.416 8.308 22.416 18.322v33.45h51.654c39.03 0 70.884 27.536 71 61.44v304.355c0 33.904-31.748 61.551-70.883 61.551h-337.35c-39.147 0-70.89-27.647-70.89-61.55v-304.24c0-33.903 31.749-61.557 70.884-61.557h49.953V279.28c0-10.13 10.008-18.32 22.41-18.32 12.408 0 22.416 8.306 22.416 18.32v32.197h145.98v-33.45c0-10.124 10.008-18.32 22.41-18.32zm-263.17 100.355c-12.396 0-21.845 6.938-21.845 12.857v304.355c0 5.919 9.56 12.857 21.846 12.857h337.129c12.285 0 21.845-6.938 21.845-12.857V372.918c0-5.919-9.56-12.857-21.845-12.857h-51.66v22.982c0 10.13-10.125 18.32-22.41 18.32-12.409 0-22.417-8.306-22.417-18.32V360.06H437.01v24.234c0 10.125-10.014 18.321-22.416 18.321-12.402 0-22.41-8.307-22.41-18.32V360.06H342.23zm218.355 114.505h63.264c12.967 0 23.436 10.24 23.436 22.987 0 12.63-10.585 22.981-23.442 22.981h-63.264c-12.85 0-23.435-10.357-23.435-22.981 0-12.63 10.584-22.987 23.441-22.987zm-159.063 91.028h222.892c12.857 0 23.325 10.357 23.552 22.987 0 12.63-10.584 22.981-23.441 22.981H401.527c-12.974 0-23.442-10.24-23.442-22.981 0-12.63 10.58-22.987 23.436-22.987z' fill='%235da0e8'/%3E%3C/svg%3E") left no-repeat;
+		// background: url(../images/calendar.svg) left no-repeat;
+		background-size: $icon-size 100%;
+	}
+}
+
+.year {
+    width: $left-space;
+    line-height: $icon-size;
+    text-align: right;
+	font-size: 1.4rem;
+	font-weight: 700;
+	cursor: pointer;
+
+	> a {
+		color: $highlight;
+		outline: none;
+
+		&.is-fold {
+			&:after {
+				transform: rotate(90deg);
+			}
+		}
+
+		&:after {
+			content: "";
+			display: inline-block;
+			margin-left: .4em;
+			border: .375rem solid transparent;
+			border-top-color: $highlight;
+			transform: rotate(0deg);
+			transition: transform ease-in-out .2s;
+		}
+	}
+}
+
+.project-list {
+	border-top: 1px dashed $box-border;
+
+	> li {
+		margin: 1em 0;
+
+		// 图标尺寸：12 x 20
+		background: url(../images/bg_dot.png?__inline) ($left-space + $icon-size - 12px / 2 + 1px) 5px no-repeat;
+
+		> p {
+			clear: left;
+			float: left;
+			width: $left-space - 5px;
+			margin-top: 3px;
+			margin-right: ($left-space + $icon-size) / 2;
+			text-align: right;
+			white-space: nowrap;
+		}
+	}
+
+	.label-base {
+		padding-top: 2px;
+		padding-bottom: 2px;
+		font-size: 12px;
+
+		> .svgicon {vertical-align: -(1.3846em - 1em) / 2;}
+	}
+}
+
+.project-type {
+	font-size: 13px;
+	color: lighten($highlight, 10);
+}
+
+.project-name,
+.project-info {overflow: hidden;}
+
+.project-name > a {
+	font-size: 1.125rem;
+	color: darken($highlight, 10);
+
+	// 非跳转链接不显示链接图标
+	&[href^="javascript:;"] {
+		cursor: default;
+		outline: none;
+
+		&:after {display: none;}
+	}
+
+	&:after {
+		content: "";
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		visibility: hidden;
+		background: url(../images/link.svg) left no-repeat;
+		background-size: .6em;
+	}
+
+	&:hover {
+		&:after {visibility: visible;}
+	}
+}
+.project-info {
+	> dt,
+	> dd {margin-top: .5rem;}
+
+	> dt {
+		clear: left;
+		float: left;
+		font-weight: 700;
+	}
+
+	> dd {overflow: hidden;}
+}

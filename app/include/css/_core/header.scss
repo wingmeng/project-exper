@@ -1,0 +1,36 @@
+html {font-size: $font-base;}
+
+body {
+	padding: 0 $gutter / 2;
+	color: #333;
+	background: $body-bg;
+}
+
+.mainbox {
+	max-width: 960px;
+	min-height: 100vh;
+	margin: 0 auto;
+	background: #fff;
+	border: 1px solid $box-border;
+	border-width: 0 1px;
+	box-shadow: 0 0 3px rgba(0, 0, 0, .15);
+
+	&:after {
+		content: "我是有底线的";
+		display: block;
+		padding: 1em 0;
+		text-align: center;
+		font-size: 12px;
+		color: darken($box-border, 5);
+		border-top: 1px dashed $box-border;
+	}
+}
+
+.main-title {
+	padding: $gutter 0;
+	text-align: center;
+	font-size: 1.875rem;
+ 	color: #fff;
+    background: $highlight;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .4);
+}

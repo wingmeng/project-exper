@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "fis3-postprocessor-autoprefixer-latest": "^1.0.0",
+    "fis-parser-node-sass": "^1.0.3",
+    "fis3-optimizer-html": "^1.0.0"
+  },
+  "devDependencies": {}
+}

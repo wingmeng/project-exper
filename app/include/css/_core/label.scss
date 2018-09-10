@@ -1,0 +1,36 @@
+.label {
+	display: inline-block;
+	user-select: none;
+
+	+ .label {margin-left: 5px;}
+
+	.filter-list > & {
+		float: left;
+		margin: 0 $gutter - 5px $gutter 0;
+	}
+
+	> input {
+		position: absolute;
+		clip: rect(0, 0, 0, 0);
+	}
+}
+
+.label-base {
+	display: block;
+	padding: 5px 1em;
+	padding-left: .8em;
+	font-size: 13px;
+	line-height: 1;
+	white-space: nowrap;
+	color: rgba(0, 0, 0, .6);
+	background: #eee;
+	border-radius: 18px;
+	
+	.label > input:checked + & {
+		font-weight: 700;
+		color: darken($highlight, 10);
+		background: lighten($highlight, 30);
+	}
+	
+	> .svgicon {font-size: 1.3846em;}
+}
