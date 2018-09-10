@@ -1,0 +1,39 @@
+[
+	{
+		"tag": "pm",
+		"name": "产品",
+		"theme": "red"
+	}, {
+		"tag": "ui",
+		"name": "设计",
+		"theme": "orange"
+	}, {
+		"tag": "fe",
+		"name": "前端",
+		"theme": "purple"
+	}, {
+		"tag": "rd",
+		"name": "后端",
+		"theme": "blue"
+	}, {
+		"tag": "ios",
+		"name": "iOS 开发",
+		"theme": "cyan"
+	}, {
+		"tag": "android",
+		"name": "Android 开发",
+		"theme": "cyan"
+	}, {
+		"tag": "dba",
+		"name": "数据库",
+		"theme": "blue"
+	}, {
+		"tag": "qa",
+		"name": "测试",
+		"theme": "green"
+	}, {
+		"tag": "op",
+		"name": "运维",
+		"theme": "coral"
+	}
+]
