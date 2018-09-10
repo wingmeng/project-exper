@@ -1,10 +1,16 @@
 const jsPath = '/include/js/',
 	cssPath = '/include/css/';
 
-// 启用指纹戳	
+// 所有文件，都使用相对路径
+fis.hook('relative');
+fis.match('**', {
+	relative: true
+});
+
+// 启用指纹戳
 fis.match('*.{js,css,png,svg,ico}', {
 	useHash: true
-});	
+});
 
 // libs 目录下的文件不压缩
 fis.match('/include/libs/(**.js)', {
@@ -49,4 +55,3 @@ fis.match('/package*.json', {
 fis.match('_*/*.*', {
 	release: false
 });
-  
