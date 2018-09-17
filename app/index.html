@@ -112,7 +112,7 @@
 	<link rel="import" href="include/images/svg-icon.html?__inline">
 
 	<script src="include/libs/vue.min.js"></script>
-	<script src="include/libs/jquery-1.11.3.min.js"></script>
+	<script src="include/libs/vue-resource.min.js"></script>
 	<script src="include/js/sort-arr.js"></script>
 	<script>
 		var role = new Vue({
@@ -174,49 +174,46 @@
 			}
 		});
 
-		// axios.all([
-		// 	axios.get('data/category.json'),
-		// 	axios.get('data/projects.json')
-		// ]).then(axios.spread(function(res1, res2) {
-		// }));
-
-		$.get('data/projects.json')
-			.done(function(res) {
-				res.sort(sortBy('year', true));  // 按年份降序
-
-				var dataArr = [],
-					elm,
-					hash = {};  // 标识重复项
-
-				res.forEach(function(item, idx) {
-					elm = item.year;
-
-					if (!hash[elm]) {  // 新的年份
-						dataArr.push({
-							year: elm,
-							isOpen: true,  // 默认展开全部年份
-							data: []
-						});
-						hash[elm] = true;
-					}
-
-					for (var i = 0; i < dataArr.length; i++) {
-						if (dataArr[i].year === elm) {  // 属于当前年份
-							dataArr[i].data.push(item);
-							break;
-						}
-					}
-				});
-
-				// 分类项目排序
-				dataArr.forEach(function(item) {
-					item.data.sort(sortBy('category'));  // 根据项目类型升序
-				});
-
-				project.projects = dataArr;
-			})
-			.always(function() {
+		Vue.http.get('data/projects.json')
+			.then(function(res) {
 				project.isLoading = false;
+
+				if (res.status === 200) {
+					var data = res.body;
+
+					data.sort(sortBy('year', true));  // 按年份降序
+
+					var dataArr = [],
+						elm,
+						hash = {};  // 标识重复项
+
+					data.forEach(function(item, idx) {
+						elm = item.year;
+
+						if (!hash[elm]) {  // 新的年份
+							dataArr.push({
+								year: elm,
+								isOpen: true,  // 默认展开全部年份
+								data: []
+							});
+							hash[elm] = true;
+						}
+
+						for (var i = 0; i < dataArr.length; i++) {
+							if (dataArr[i].year === elm) {  // 属于当前年份
+								dataArr[i].data.push(item);
+								break;
+							}
+						}
+					});
+
+					// 分类项目排序
+					dataArr.forEach(function(item) {
+						item.data.sort(sortBy('category'));  // 根据项目类型升序
+					});
+
+					project.projects = dataArr;
+				}
 			});
 	</script>
 </body>
