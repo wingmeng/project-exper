@@ -282,7 +282,7 @@
 		]
 	}, {
 		"name": "EastAdmin - Web 后台管理系统通用框架",
-		"url": "https://gitee.com/eastups/EastWebManager",
+		"url": null,
 		"year": "2018",
 		"role":  ["ui", "fe"],
 		"category": "tools",
