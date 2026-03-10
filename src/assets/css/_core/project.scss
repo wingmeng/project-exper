@@ -1,0 +1,144 @@
+$left-space: 140px !default;
+$icon-size: 40px;
+
+.project {
+	position: relative;
+	padding-bottom: $gutter / 2;
+	margin: $icon-size + $icon-size / 2 $gutter 0;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: $left-space + $icon-size;
+		width: 2px;
+		height: 100%;
+		background: $highlight;
+	}
+
+	> h2 {
+		position: absolute;
+		top: -$icon-size;
+		left: $left-space + $gutter;
+		width: $icon-size;
+		padding-left: $icon-size + $gutter;
+		white-space: nowrap;
+		line-height: $icon-size;
+		font-size: 1.375rem;
+		color: $highlight;
+		background: url("../images/calendar.svg") left no-repeat;
+		background-size: $icon-size 100%;
+	}
+}
+
+.year {
+    width: $left-space;
+    line-height: $icon-size;
+    text-align: right;
+	font-size: 1.4rem;
+	font-weight: 700;
+	cursor: pointer;
+
+	> a {
+		color: $highlight;
+		outline: none;
+
+		&.is-fold {
+			&:after {
+				transform: rotate(90deg);
+			}
+		}
+
+		&:after {
+			content: "";
+			display: inline-block;
+			margin-left: .4em;
+			border: .375rem solid transparent;
+			border-top-color: $highlight;
+			transform: rotate(0deg);
+			transition: transform ease-in-out .2s;
+		}
+	}
+}
+
+.project-list {
+	border-top: 1px dashed $box-border;
+
+	> li {
+		position: relative;
+		margin: 1em 0;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 12px;
+			left: $left-space + $icon-size + 1px;
+			width: 10px;
+  			height: 10px;
+			transform: translateX(-50%);
+			color: $highlight;
+			background: currentColor;
+			border-radius: 50%;
+			box-shadow: 0 0 0 1px #fff, 0 0 0 3px, 0 0 0 5px #fff;
+		}
+
+		> p {
+			clear: left;
+			float: left;
+			width: $left-space - 5px;
+			margin-top: 3px;
+			margin-right: ($left-space + $icon-size) / 2;
+			text-align: right;
+			white-space: nowrap;
+		}
+	}
+
+	.label-base {
+		padding-top: 2px;
+		padding-bottom: 2px;
+		font-size: 12px;
+
+		> .svgicon {vertical-align: -(1.3846em - 1em) / 2;}
+	}
+}
+
+.project-type {
+	font-size: 13px;
+	color: lighten($highlight, 10);
+}
+
+.project-name {overflow: hidden;}
+
+.project-name > a {
+	font-size: 1.125rem;
+	color: darken($highlight, 10);
+
+	// 非跳转链接不显示链接图标
+	&[href^="javascript:;"] {
+		cursor: default;
+		outline: none;
+
+		&:after {display: none;}
+	}
+
+	&:after {
+		content: "";
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		margin-left: .5em;
+		background: url("../images/link.svg") left no-repeat;
+		background-size: .6em;
+	}
+}
+.project-info {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: .5em;
+
+	> dt {font-weight: 700;}
+
+	> dd {
+		> .label + .label {margin-left: .5em;}
+	}
+}

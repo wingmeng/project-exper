@@ -1,0 +1,13 @@
+[class^="theme-"],
+[class*="theme-"] {
+	color: #fff;
+
+	> .svgicon {opacity: .8;}
+}
+.theme-red {background: $color-red;}
+.theme-orange {background: $color-orange;}
+.theme-purple {background: $color-purple;}
+.theme-blue {background: $color-blue;}
+.theme-cyan {background: $color-cyan;}
+.theme-green {background: $color-green;}
+.theme-coral {background: $color-coral;}
