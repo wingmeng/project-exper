@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "variable" as *;
+
 .label {
 	display: inline-block;
 	user-select: none;
@@ -15,13 +18,13 @@
 	font-size: 13px;
 	line-height: 1;
 	white-space: nowrap;
-	color: rgba(0, 0, 0, .5);
+	color: rgba(#000, 0.5);
 	background: #eee;
 	border-radius: 18px;
 
 	.label > input:checked + & {
-		color: darken($highlight, 10);
-		background: lighten($highlight, 30);
+		color: color.adjust($highlight, $lightness: -10%);
+		background: color.adjust($highlight, $lightness: 30%);
 	}
 
 	> .svgicon {font-size: 1.3846em;}

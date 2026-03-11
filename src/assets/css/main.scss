@@ -1,16 +1,17 @@
-@charset "UTF-8";
+@use "sass:color" as *;
+@use "sass:math" as *;
 
-@import "_core/variable";
-@import "_core/reset";
-@import "_core/font";
+@use "_core/variable" as *;
+@use "_core/reset" as *;
+@use "_core/font" as *;
 
-@import "_core/header";
-@import "_core/section";
-@import "_core/label";
-@import "_core/project";
-@import "_core/theme";
-@import "_core/media";
-@import "_core/animate";
+@use "_core/header" as *;
+@use "_core/section" as *;
+@use "_core/label" as *;
+@use "_core/project" as *;
+@use "_core/theme" as *;
+@use "_core/media" as *;
+@use "_core/animate" as *;
 
 [v-cloak] {display: none;}
 

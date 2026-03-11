@@ -1,10 +1,14 @@
+@use "sass:math";
+@use "sass:color";
+@use "variable" as *;
+
 $left-space: 140px !default;
 $icon-size: 40px;
 
 .project {
 	position: relative;
-	padding-bottom: $gutter / 2;
-	margin: $icon-size + $icon-size / 2 $gutter 0;
+	padding-bottom: math.div($gutter, 2);
+	margin: $icon-size + math.div($icon-size, 2) $gutter 0;
 
 	&::before {
 		content: "";
@@ -66,6 +70,9 @@ $icon-size: 40px;
 
 	> li {
 		position: relative;
+    display: grid;
+    grid-template-columns: ($left-space - 5px) 1fr;
+    gap: 0 ($left-space + $icon-size) / 2;
 		margin: 1em 0;
 
 		&::before {
@@ -74,7 +81,7 @@ $icon-size: 40px;
 			top: 12px;
 			left: $left-space + $icon-size + 1px;
 			width: 10px;
-  			height: 10px;
+      height: 10px;
 			transform: translateX(-50%);
 			color: $highlight;
 			background: currentColor;
@@ -83,11 +90,7 @@ $icon-size: 40px;
 		}
 
 		> p {
-			clear: left;
-			float: left;
-			width: $left-space - 5px;
 			margin-top: 3px;
-			margin-right: ($left-space + $icon-size) / 2;
 			text-align: right;
 			white-space: nowrap;
 		}
@@ -98,20 +101,20 @@ $icon-size: 40px;
 		padding-bottom: 2px;
 		font-size: 12px;
 
-		> .svgicon {vertical-align: -(1.3846em - 1em) / 2;}
+		> .svgicon {vertical-align: math.div(-(1.3846em - 1em), 2);}
 	}
 }
 
 .project-type {
 	font-size: 13px;
-	color: lighten($highlight, 10);
+	color: color.adjust($highlight, $lightness: 10%);
 }
 
 .project-name {overflow: hidden;}
 
 .project-name > a {
 	font-size: 1.125rem;
-	color: darken($highlight, 10);
+	color: color.adjust($highlight, $lightness: -10%);
 
 	// 非跳转链接不显示链接图标
 	&[href^="javascript:;"] {
@@ -126,19 +129,28 @@ $icon-size: 40px;
 		display: inline-block;
 		width: 1em;
 		height: 1em;
-		margin-left: .5em;
+		margin-left: 0.5em;
 		background: url("../images/link.svg") left no-repeat;
-		background-size: .6em;
+		background-size: 0.6em;
 	}
 }
 .project-info {
 	display: grid;
 	grid-template-columns: auto 1fr;
-	gap: .5em;
+	gap: 0.5em;
 
 	> dt {font-weight: 700;}
 
 	> dd {
-		> .label + .label {margin-left: .5em;}
+		> .label + .label {margin-left: 0.5em;}
 	}
+}
+
+.duty-list {
+  padding-left: 1.5em;
+  list-style-type: decimal;
+
+  > li {
+    &::marker {color: rgba(#000, 0.5);}
+  }
 }

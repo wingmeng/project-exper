@@ -14,7 +14,7 @@
 				<svg class="svgicon">
 				  <use :xlink:href="'#icon-' + role.tag"></use>
 				</svg>
-				{{ role.name }}
+				{{ role.name }} <small>({{ countInfo.role[role.tag] ?? 0 }})</small>
 			  </span>
 			</label>
 		  </div>
@@ -30,7 +30,7 @@
 				<svg class="svgicon">
 				  <use :xlink:href="'#icon-' + item.tag"></use>
 				</svg>
-				{{ item.name }}
+				{{ item.name }} <small>({{ countInfo.category[item.tag] ?? 0 }})</small>
 			  </span>
 			</label>
 		  </div>
@@ -104,7 +104,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch, onBeforeUnmount } from 'vue'
+import { ref, onMounted, watch, onBeforeUnmount, reactive } from 'vue'
 import rolesData from '@/assets/json/roles.json'
 import categoriesData from '@/assets/json/category.json'
 import { sortBy } from '@/utils/sort-arr'
@@ -119,6 +119,10 @@ const isLoading = ref(true)
 const projects = ref([])
 const roles = ref(rolesData)
 const categories = ref(categoriesData)
+const countInfo = reactive({
+  role: {},
+  category: {}
+})
 
 // sticky 状态
 const isFixed = ref(false)
@@ -143,6 +147,13 @@ const updateGroupedProjects = () => {
 
   data.forEach(item => {
     const year = item.year
+
+    item.role.forEach(roleTag => {
+      countInfo.role[roleTag] = (countInfo.role[roleTag] || 0) + 1
+    })
+
+    countInfo.category[item.category] = (countInfo.category[item.category] || 0) + 1
+
     if (!hash[year]) {
       dataArr.push({
         year,
@@ -235,7 +246,7 @@ onMounted(() => {
   })
 
   // 使用 fetch 异步加载 projects.json
-  fetch('/data/projects.json')
+  fetch('./data/projects.json')
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
