@@ -1,85 +1,76 @@
-@use "sass:math";
-@use "variable" as *;
-
-$sm-gutter: 5px;
-$sm-left-space: 100px;
-$xs-left-space: 70px;
-$sm-icon-size: 20px;
-
 html {font-size: 16px;}
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   html {font-size: 14px;}
-  body {padding: 0;}
 
-  .main-title {padding: $sm-gutter * 2 0;}
-  .section {padding: 0 $sm-gutter;}
+  body {
+    padding: 0;
+    font-size: 13px;
+  }
 
   .project {
-    margin: $sm-icon-size * 3 $sm-gutter $sm-gutter * 2;
+    margin-left: $gutter-sm;
+    margin-right: $gutter-sm;
 
     &::before {
-      left: $sm-left-space + $sm-icon-size;
+      left: $left-space-sm + $icon-size-sm;
     }
 
     > h2 {
-      left: $sm-left-space + $sm-gutter * 2 - math.div($sm-icon-size, 2);
-      padding-left: $sm-icon-size * 2 + $sm-gutter * 2;
+      left: $left-space-sm + $gutter-sm * 2 - math.div($icon-size-sm, 2);
     }
   }
 
-  .year {
-    width: $sm-left-space;
-    font-size: 1.14285rem;
-  }
+  .year {width: $left-space-sm;}
 
   .project-list {
     > li {
-      grid-template-columns: ($xs-left-space - $sm-icon-size) 1fr;
+      grid-template-columns: ($left-space-sm - $icon-size-sm * 2) 1fr;
 
       &::before {
-        left: $sm-left-space + $sm-icon-size + 1px;
+        left: $left-space-sm + $icon-size-sm + 1px;
       }
 
-      > p {
-        width: $sm-left-space - 5px;
-        margin-right: math.div($sm-left-space + $sm-icon-size, 2) - $sm-gutter * 2;
-      }
+      > p {width: $left-space-sm;}
     }
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
   .project {
     &::before {
-      left: $xs-left-space + $sm-icon-size - $sm-gutter;
+      left: $left-space-xs + $icon-size-sm;
     }
 
     > h2 {
-      left: $xs-left-space;
+      left: $left-space-xs;
     }
   }
 
-  .year {
-    width: $xs-left-space;
-  }
+  .year {width: auto;}
 
   .project-list {
     > li {
+      grid-template-columns: auto;
+      padding-left: $left-space-xs + $icon-size-sm + $gutter-md;
+
       &::before {
-        left: $xs-left-space + math.div($sm-icon-size, 2) + 1px;
+        left: $left-space-xs + $icon-size-sm + 1px;
       }
 
       > p {
-        width: $xs-left-space - 5px;
-        margin-right: math.div($xs-left-space + $sm-icon-size, 2);
+        width: auto;
+        order: 1;
+        text-align: left;
       }
     }
   }
 
-  .project-type {
-    font-size: 12px;
+  .category-label {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 
-
+  .project-info {order: 5;}
 }

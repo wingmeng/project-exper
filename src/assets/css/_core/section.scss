@@ -1,9 +1,7 @@
-@use "variable" as *;
-
 .section {
     display: flex;
 	gap: 1rem;
-	padding: 0 $gutter;
+	padding: 0 $gutter-md;
 	margin: 0 auto;
 
 	+ .section {margin-top: 1rem;}

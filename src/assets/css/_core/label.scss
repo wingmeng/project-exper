@@ -1,5 +1,8 @@
-@use "sass:color";
-@use "variable" as *;
+.label-container {
+  display: flex;
+  gap: 0.5em;
+  flex-wrap: wrap;
+}
 
 .label {
 	display: inline-block;
@@ -14,13 +17,13 @@
 .label-base {
 	display: block;
 	padding: 5px 1em;
-	padding-left: .8em;
-	font-size: 13px;
+	padding-left: 0.8em;
+	font-size: 0.8125rem;
 	line-height: 1;
 	white-space: nowrap;
 	color: rgba(#000, 0.5);
 	background: #eee;
-	border-radius: 18px;
+	border-radius: 1em;
 
 	.label > input:checked + & {
 		color: color.adjust($highlight, $lightness: -10%);

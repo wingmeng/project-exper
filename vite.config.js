@@ -19,5 +19,19 @@ export default defineConfig({
   server: {
     port: 3000,
     open: true
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+          @use "sass:color" as color;
+          @use "sass:math" as math;
+          @use "@/assets/css/_core/variable.scss" as *;
+        `,
+        sassOptions: {
+          quietDeps: true
+        }
+      }
+    }
   }
 })

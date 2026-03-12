@@ -1,149 +1,147 @@
-@use "sass:math";
-@use "sass:color";
-@use "variable" as *;
-
-$left-space: 140px !default;
-$icon-size: 40px;
-
 .project {
-	position: relative;
-	padding-bottom: math.div($gutter, 2);
-	margin: $icon-size + math.div($icon-size, 2) $gutter 0;
+  position: relative;
+  margin: $icon-size-md + math.div($icon-size-md, 2) 1rem 0;
 
-	&::before {
-		content: "";
-		position: absolute;
-		top: 0;
-		left: $left-space + $icon-size;
-		width: 2px;
-		height: 100%;
-		background: $highlight;
-	}
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: $left-space-md + $icon-size-md;
+    width: 2px;
+    height: 100%;
+    background: $highlight;
+  }
 
-	> h2 {
-		position: absolute;
-		top: -$icon-size;
-		left: $left-space + $gutter;
-		width: $icon-size;
-		padding-left: $icon-size + $gutter;
-		white-space: nowrap;
-		line-height: $icon-size;
-		font-size: 1.375rem;
-		color: $highlight;
-		background: url("../images/calendar.svg") left no-repeat;
-		background-size: $icon-size 100%;
-	}
+  > h2 {
+    position: absolute;
+    top: -$icon-size-md;
+    left: $left-space-md + $gutter-md;
+    padding-left: $icon-size-md + $gutter-md;
+    white-space: nowrap;
+    line-height: $icon-size-md;
+    font-size: 1.375rem;
+    color: $highlight;
+    background: url("../images/calendar.svg") left no-repeat;
+    background-size: $icon-size-md 100%;
+  }
 }
 
 .year {
-    width: $left-space;
-    line-height: $icon-size;
-    text-align: right;
-	font-size: 1.4rem;
-	font-weight: 700;
-	cursor: pointer;
+  width: $left-space-md;
+  line-height: $icon-size-md;
+  text-align: right;
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
 
-	> a {
-		color: $highlight;
-		outline: none;
+  > a {
+    color: $highlight;
+    outline: none;
 
-		&.is-fold {
-			&:after {
-				transform: rotate(90deg);
-			}
-		}
+    &.is-fold {
+      &:after {
+        transform: rotate(90deg);
+      }
+    }
 
-		&:after {
-			content: "";
-			display: inline-block;
-			margin-left: .4em;
-			border: .375rem solid transparent;
-			border-top-color: $highlight;
-			transform: rotate(0deg);
-			transition: transform ease-in-out .2s;
-		}
-	}
+    &:after {
+      content: "";
+      display: inline-block;
+      margin-left: 0.4em;
+      border: 0.375rem solid transparent;
+      border-top-color: $highlight;
+      transform: rotate(0deg);
+      transition: transform ease-in-out 0.2s;
+    }
+  }
 }
 
 .project-list {
-	border-top: 1px dashed $box-border;
+  border-top: 1px dashed $box-border;
 
-	> li {
-		position: relative;
+  > li {
+    position: relative;
     display: grid;
-    grid-template-columns: ($left-space - 5px) 1fr;
-    gap: 0 ($left-space + $icon-size) / 2;
-		margin: 1em 0;
+    grid-template-columns: ($left-space-md - 5px) 1fr;
+    gap: 0 math.div($left-space-md + $icon-size-md, 2);
+    margin: 1em 0;
 
-		&::before {
-			content: "";
-			position: absolute;
-			top: 12px;
-			left: $left-space + $icon-size + 1px;
-			width: 10px;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: $left-space-md + $icon-size-md + 1px;
+      width: 10px;
       height: 10px;
-			transform: translateX(-50%);
-			color: $highlight;
-			background: currentColor;
-			border-radius: 50%;
-			box-shadow: 0 0 0 1px #fff, 0 0 0 3px, 0 0 0 5px #fff;
-		}
+      transform: translateX(-50%);
+      color: $highlight;
+      background: currentColor;
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 1px #fff,
+        0 0 0 3px,
+        0 0 0 5px #fff;
+    }
 
-		> p {
-			margin-top: 3px;
-			text-align: right;
-			white-space: nowrap;
-		}
-	}
+    > p {
+      margin-top: 0.375rem;
+      text-align: right;
+      white-space: nowrap;
+    }
+  }
 
-	.label-base {
-		padding-top: 2px;
-		padding-bottom: 2px;
-		font-size: 12px;
+  .label-base {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 12px;
 
-		> .svgicon {vertical-align: math.div(-(1.3846em - 1em), 2);}
-	}
+    > .svgicon {
+      vertical-align: math.div(-(1.3846em - 1em), 2);
+    }
+  }
 }
 
 .project-type {
-	font-size: 13px;
-	color: color.adjust($highlight, $lightness: 10%);
+  font-size: 13px;
+  color: color.adjust($highlight, $lightness: 10%);
 }
 
-.project-name {overflow: hidden;}
+.project-name {
+  overflow: hidden;
+}
 
 .project-name > a {
-	font-size: 1.125rem;
-	color: color.adjust($highlight, $lightness: -10%);
+  font-size: 1.125rem;
+  color: color.adjust($highlight, $lightness: -10%);
 
-	// 非跳转链接不显示链接图标
-	&[href^="javascript:;"] {
-		cursor: default;
-		outline: none;
+  // 非跳转链接不显示链接图标
+  &[href^="javascript:;"] {
+    cursor: default;
+    outline: none;
 
-		&:after {display: none;}
-	}
+    &:after {
+      display: none;
+    }
+  }
 
-	&:after {
-		content: "";
-		display: inline-block;
-		width: 1em;
-		height: 1em;
-		margin-left: 0.5em;
-		background: url("../images/link.svg") left no-repeat;
-		background-size: 0.6em;
-	}
+  &:after {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-left: 0.5em;
+    background: url("../images/link.svg") left no-repeat;
+    background-size: 0.6em;
+  }
 }
 .project-info {
-	display: grid;
-	grid-template-columns: auto 1fr;
-	gap: 0.5em;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5em;
 
-	> dt {font-weight: 700;}
-
-	> dd {
-		> .label + .label {margin-left: 0.5em;}
-	}
+  > dt {
+    font-weight: 700;
+  }
 }
 
 .duty-list {
@@ -151,6 +149,8 @@ $icon-size: 40px;
   list-style-type: decimal;
 
   > li {
-    &::marker {color: rgba(#000, 0.5);}
+    &::marker {
+      color: rgba(#000, 0.5);
+    }
   }
 }

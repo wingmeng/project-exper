@@ -1,5 +1,15 @@
 @use "sass:color";
 
+$left-space-md: 140px;
+$left-space-sm: 100px;
+$left-space-xs: 10px;
+
+$icon-size-md: 40px;
+$icon-size-sm: 20px;
+
+$gutter-md: 20px;
+$gutter-sm: 6px;
+
 $body-bg: #e6edf3;
 $highlight: #5da0e8;
 $box-border: color.adjust($body-bg, $lightness: -10%);
@@ -12,5 +22,3 @@ $color-blue: #5b7bd1;
 $color-cyan: #1abc9c;
 $color-green: #27ae60;
 $color-coral: #ff7f50;
-
-$gutter: 20px !default;

@@ -50,7 +50,7 @@
               <ul class="project-list" v-show="project.isOpen">
                 <template v-for="(item, idx) in project.data" :key="idx">
                   <li v-if="isShow(item)">
-                    <p>
+                    <p class="category-label">
                       <span class="label">
                         <span class="label-base">
                           <svg class="svgicon">
@@ -71,7 +71,7 @@
                       <dt>项目描述：</dt>
                       <dd>{{ item.intro }}</dd>
                       <dt>我的角色：</dt>
-                      <dd>
+                      <dd class="label-container">
                         <span class="label" v-for="roleTag in item.role" :key="roleTag">
                           <span class="label-base" :class="'theme-' + getRole(roleTag).theme">
                             <svg class="svgicon">
