@@ -10,12 +10,16 @@ body {
   background: #fff;
 
   &:after {
-    content: "我是有底线的";
+    content: attr(data-statement);
+    position: sticky;
+    bottom: 0;
     display: block;
     padding: 1em 0;
+    margin-top: 1rem;
     text-align: center;
     font-size: 12px;
-    color: color.adjust($box-border, $lightness: -5%);
+    color: #888;
+    background: #fff;
     border-top: 1px dashed $box-border;
   }
 }
@@ -36,6 +40,7 @@ body {
   padding: 0.75rem 0;
   overflow: auto;
   background: #fff;
+  transition: box-shadow 0.2s ease;
 
   &.fixed {
     box-shadow: 0 6px 8px -3px rgba(#000, 0.25);

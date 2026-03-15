@@ -16,12 +16,8 @@
 		"name": "后端",
 		"theme": "blue"
 	}, {
-		"tag": "ios",
-		"name": "iOS 开发",
-		"theme": "cyan"
-	}, {
-		"tag": "android",
-		"name": "Android 开发",
+		"tag": "md",
+		"name": "移动开发",
 		"theme": "cyan"
 	}, {
 		"tag": "dba",

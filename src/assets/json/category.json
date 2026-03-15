@@ -1,24 +1,37 @@
 [
-    {
-		"name": "云管理平台",
-		"tag": "cloud"
-	}, {
-		"name": "Web 软件",
-		"tag": "web"
-	}, {
-		"name": "手机 app",
-		"tag": "app"
-	}, {
-		"name": "微信平台",
-		"tag": "wechat"
-	}, {
-		"name": "团队工具",
-		"tag": "tools"
-	}, {
-		"name": "主控终端屏",
-		"tag": "screen"
-	}, {
-		"name": "单机软件",
-		"tag": "software"
-	}
+  {
+    "name": "Web 应用",
+    "tag": "web",
+    "desc": "桌面或移动端浏览器访问的系统（含公众号 H5、管理后台、SaaS 等），以 Web 技术栈为主"
+  },
+  {
+    "name": "技术平台/中台",
+    "tag": "platform",
+    "desc": "提供可复用能力的服务体系（如云平台、用户中心、数据中台等）"
+  },
+  {
+    "name": "移动原生/跨端 App",
+    "tag": "mobile",
+    "desc": "包括 iOS / Android 原生或 React Native / Flutter 等跨平台应用"
+  },
+  {
+    "name": "小程序",
+    "tag": "miniprogram",
+    "desc": "微信、welink、钉钉等超级 App 内运行的小程序（独立于 H5）"
+  },
+  {
+    "name": "应用插件",
+    "tag": "plugin",
+    "desc": "浏览器扩展、VS Code 插件、Figma 插件等增强型轻量工具"
+  },
+  {
+    "name": "嵌入式/终端设备软件",
+    "tag": "embedded",
+    "desc": "运行在专用硬件上的交互程序（如信息屏、自助终端、IoT 设备 UI）"
+  },
+  {
+    "name": "研发效能基建",
+    "tag": "infra",
+    "desc": "内部提效工具：脚手架、CLI、规范、组件库、内部 Web 工具等"
+  }
 ]

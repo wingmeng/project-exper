@@ -12,6 +12,10 @@
 		position: absolute;
 		clip: rect(0, 0, 0, 0);
 	}
+
+  .fixed &:hover {
+    .label-base-text {font-size: 0.8125rem;}
+  }
 }
 
 .label-base {
@@ -31,4 +35,11 @@
 	}
 
 	> .svgicon {font-size: 1.3846em;}
+}
+
+.label-base-text {
+  margin: 0 0.25em;
+  transition: font-size 0.1s;
+
+  .fixed & {font-size: 0;}
 }
