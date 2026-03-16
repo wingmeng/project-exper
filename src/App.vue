@@ -92,7 +92,7 @@
                       </dd>
                       <dt>我的职责：</dt>
                       <dd>
-                        <ol>
+                        <ol class="duty-list">
                           <li v-for="(duty, idx) in item.duty" :key="idx">
                             {{ buildDutyList(duty, idx, item.duty) }}
                           </li>
@@ -220,11 +220,7 @@ const isShow = (item) => {
 }
 
 const buildDutyList = (item, idx, array) => {
-  let str = item + (idx === array.length - 1 ? '。' : '；')
-  if (array.length > 1) {
-    str = (idx + 1) + '. ' + str
-  }
-  return str
+  return item + (idx === array.length - 1 ? '。' : '；')
 }
 
 const _getFilter = (tag, obj) => {
@@ -319,7 +315,8 @@ onMounted(() => {
     },
     {
       root: null,
-      threshold: [0]
+      threshold: [0],
+      rootMargin: '-40px 0px 0px 0px' // 添加偏移，避免临界抖动问题
     }
   )
 

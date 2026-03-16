@@ -145,12 +145,23 @@
 }
 
 .duty-list {
-  padding-left: 1.5em;
-  list-style-type: decimal;
+  counter-reset: order -1;
 
   > li {
-    &::marker {
-      color: rgba(#000, 0.5);
+    display: flex;
+    align-items: baseline;
+    gap: 0.5em;
+    counter-increment: order;
+
+    &::before {
+      content: counter(order);
+      padding: 0 5px;
+      line-height: 1.4;
+      font-size: 12px;
+      font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Courier New", monospace;
+      color: color.adjust($color-blue, $lightness: 12%, $saturation: -5%);
+      background: color.adjust($color-blue, $lightness: 33%, $saturation: 5%);
+      border-radius: 6px 8px 10px 4px / 6px 5px 8px 3px;
     }
   }
 }

@@ -39,7 +39,7 @@
 
 .label-base-text {
   margin: 0 0.25em;
-  transition: font-size 0.1s;
+  transition: font-size 0.1s 150ms;
 
   .fixed & {font-size: 0;}
 }
