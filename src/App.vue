@@ -316,7 +316,7 @@ onMounted(() => {
     {
       root: null,
       threshold: [0],
-      rootMargin: '-40px 0px 0px 0px' // 添加偏移，避免临界抖动问题
+      rootMargin: '-50px 0px 0px 0px' // 添加偏移，避免临界抖动问题
     }
   )
 
