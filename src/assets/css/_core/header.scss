@@ -36,13 +36,13 @@ body {
   position: sticky;
   top: 0;
   z-index: 1;
-  max-height: 30vh;
   padding: 0.75rem 0;
   overflow: auto;
   background: #fff;
   transition: box-shadow 0.2s ease;
 
   &.fixed {
+    max-height: 30vh;
     box-shadow: 0 6px 8px -3px rgba(#000, 0.25);
   }
 }

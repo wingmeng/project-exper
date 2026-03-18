@@ -1,115 +1,113 @@
 <template>
-  <div id="app">
-    <div class="mainbox"
-         data-statement="ℹ️ 本页面所涉项目信息均已做脱敏处理，不涉及任何保密或敏感内容。项目描述仅用于展示个人技术能力，不代表原雇主观点或产品现状。">
-      <h1 class="main-title">项目看板</h1>
-      <i ref="stickySentinel"></i>
-      <div ref="filterBar" class="filter-bar" :class="{ fixed: isFixed }">
-        <section class="section">
-          <h2>
-            <label>
-              <input type="checkbox" ref="roleAllCheckbox" v-model="filterSelectedAll.role" @change="toggleAll('role')">
-              开发角色
-            </label>
-          </h2>
-          <div class="filter-list" v-cloak>
-            <label v-for="role in roles" :key="role.tag" class="label">
-              <input type="checkbox" :value="role.tag" v-model="selectedRoles">
-              <span class="label-base">
-                <svg class="svgicon">
-                  <use :xlink:href="'#icon-' + role.tag"></use>
-                </svg>
-                <span class="label-base-text">{{ role.name }}</span>
-                <small>({{ countInfo.role[role.tag] ?? 0 }})</small>
-              </span>
-            </label>
-          </div>
-        </section>
-        <section class="section">
-          <h2>
-            <label>
-              <input type="checkbox" ref="categoryAllCheckbox" v-model="filterSelectedAll.category"
-                @change="toggleAll('category')">
-              项目类型
-            </label>
-          </h2>
-          <div class="filter-list" v-cloak>
-            <label v-for="item in categories" :key="item.tag" class="label">
-              <input type="checkbox" :value="item.tag" v-model="selectedCategories">
-              <span class="label-base">
-                <svg class="svgicon">
-                  <use :xlink:href="'#icon-' + item.tag"></use>
-                </svg>
-                <span class="label-base-text">{{ item.name }}</span>
-                <small>({{ countInfo.category[item.tag] ?? 0 }})</small>
-              </span>
-            </label>
-          </div>
-        </section>
-      </div>
-      <section class="project">
-        <h2>项目记录</h2>
-        <div v-cloak>
-          <p v-if="isLoading" style="text-align: center">loading...</p>
-          <template v-else v-for="project in groupedProjectsData" :key="project.year">
-            <h3 class="year">
-              <a href="javascript:;" :class="{ 'is-fold': !project.isOpen }" @click="toggleYear(project.year)">{{
-                project.year }}</a>
-            </h3>
-            <transition name="list-fade">
-              <ul class="project-list" v-show="project.isOpen">
-                <template v-for="(item, idx) in project.data" :key="idx">
-                  <li v-if="isShow(item)">
-                    <p class="category-label">
-                      <span class="label">
-                        <span class="label-base">
-                          <svg class="svgicon">
-                            <use :xlink:href="'#icon-' + item.category"></use>
-                          </svg>
-                          {{ getCategory(item.category) }}
-                        </span>
-                      </span>
-                    </p>
-                    <h4 class="project-name">
-                      <a :href="item.url || 'javascript:;'" :target="item.url ? '_blank' : ''">
-                        {{ item.name }}
-                      </a>
-                    </h4>
-                    <p class="project-type">{{ item.lang }}</p>
-                    <dl class="project-info">
-                      <dt>项目描述：</dt>
-                      <dd>{{ item.intro }}</dd>
-                      <dt>我的角色：</dt>
-                      <dd class="label-container">
-                        <span class="label" v-for="roleTag in item.role" :key="roleTag">
-                          <span class="label-base" :class="'theme-' + getRole(roleTag).theme">
-                            <svg class="svgicon">
-                              <use :xlink:href="'#icon-' + getRole(roleTag).tag"></use>
-                            </svg>
-                            {{ getRole(roleTag).name }}
-                          </span>
-                        </span>
-                      </dd>
-                      <dt>我的职责：</dt>
-                      <dd>
-                        <ol class="duty-list">
-                          <li v-for="(duty, idx) in item.duty" :key="idx">
-                            {{ buildDutyList(duty, idx, item.duty) }}
-                          </li>
-                        </ol>
-                      </dd>
-                    </dl>
-                  </li>
-                </template>
-              </ul>
-            </transition>
-          </template>
+  <div class="mainbox"
+        data-statement="ℹ️ 本页面所涉项目信息均已做脱敏处理，不涉及任何保密或敏感内容。项目描述仅用于展示个人技术能力，不代表原雇主观点或产品现状。">
+    <h1 class="main-title">项目看板</h1>
+    <div ref="stickySentinel"></div>
+    <div ref="filterBar" class="filter-bar" :class="{ fixed: isFixed }">
+      <section class="section">
+        <h2>
+          <label>
+            <input type="checkbox" ref="roleAllCheckbox" v-model="filterSelectedAll.role" @change="toggleAll('role')">
+            开发角色
+          </label>
+        </h2>
+        <div class="filter-list" v-cloak>
+          <label v-for="role in roles" :key="role.tag" class="label">
+            <input type="checkbox" :value="role.tag" v-model="selectedRoles">
+            <span class="label-base">
+              <svg class="svgicon">
+                <use :xlink:href="'#icon-' + role.tag"></use>
+              </svg>
+              <span class="label-base-text">{{ role.name }}</span>
+              <small>({{ countInfo.role[role.tag] ?? 0 }})</small>
+            </span>
+          </label>
+        </div>
+      </section>
+      <section class="section">
+        <h2>
+          <label>
+            <input type="checkbox" ref="categoryAllCheckbox" v-model="filterSelectedAll.category"
+              @change="toggleAll('category')">
+            项目类型
+          </label>
+        </h2>
+        <div class="filter-list" v-cloak>
+          <label v-for="item in categories" :key="item.tag" class="label">
+            <input type="checkbox" :value="item.tag" v-model="selectedCategories">
+            <span class="label-base">
+              <svg class="svgicon">
+                <use :xlink:href="'#icon-' + item.tag"></use>
+              </svg>
+              <span class="label-base-text">{{ item.name }}</span>
+              <small>({{ countInfo.category[item.tag] ?? 0 }})</small>
+            </span>
+          </label>
         </div>
       </section>
     </div>
-    <!-- SVG图标内联 -->
-    <div v-html="svgIcons" style="display: none;"></div>
+    <section class="project">
+      <h2>项目记录</h2>
+      <div v-cloak>
+        <p v-if="isLoading" style="text-align: center">loading...</p>
+        <template v-else v-for="project in groupedProjectsData" :key="project.year">
+          <h3 class="year">
+            <a href="javascript:;" :class="{ 'is-fold': !project.isOpen }" @click="toggleYear(project.year)">{{
+              project.year }}</a>
+          </h3>
+          <transition name="list-fade">
+            <ul class="project-list" v-show="project.isOpen">
+              <template v-for="(item, idx) in project.data" :key="idx">
+                <li v-if="isShow(item)">
+                  <p class="category-label">
+                    <span class="label">
+                      <span class="label-base">
+                        <svg class="svgicon">
+                          <use :xlink:href="'#icon-' + item.category"></use>
+                        </svg>
+                        {{ getCategory(item.category) }}
+                      </span>
+                    </span>
+                  </p>
+                  <h4 class="project-name">
+                    <a :href="item.url || 'javascript:;'" :target="item.url ? '_blank' : ''">
+                      {{ item.name }}
+                    </a>
+                  </h4>
+                  <p class="project-type">{{ item.lang }}</p>
+                  <dl class="project-info">
+                    <dt>项目描述：</dt>
+                    <dd>{{ item.intro }}</dd>
+                    <dt>我的角色：</dt>
+                    <dd class="label-container">
+                      <span class="label" v-for="roleTag in item.role" :key="roleTag">
+                        <span class="label-base" :class="'theme-' + getRole(roleTag).theme">
+                          <svg class="svgicon">
+                            <use :xlink:href="'#icon-' + getRole(roleTag).tag"></use>
+                          </svg>
+                          {{ getRole(roleTag).name }}
+                        </span>
+                      </span>
+                    </dd>
+                    <dt>我的职责：</dt>
+                    <dd>
+                      <ol class="duty-list">
+                        <li v-for="(duty, idx) in item.duty" :key="idx">
+                          {{ buildDutyList(duty, idx, item.duty) }}
+                        </li>
+                      </ol>
+                    </dd>
+                  </dl>
+                </li>
+              </template>
+            </ul>
+          </transition>
+        </template>
+      </div>
+    </section>
   </div>
+  <!-- SVG图标内联 -->
+  <div v-html="svgIcons" style="display: none;"></div>
 </template>
 
 <script setup>
@@ -305,19 +303,20 @@ onMounted(() => {
   updateAllCheckboxState('role')
   updateAllCheckboxState('category')
 
+  // 创建一个克隆，撑开布局，防止 sticky 边界抖动问题
+  const { height } = filterBar.value.getBoundingClientRect()
+  stickySentinel.value.style.height = `${height}px`
+  stickySentinel.value.style.marginBottom = `-${height}px`
+
   // 通过观察 sentinel 元素来判断 filterBar 是否处于 sticky 状态
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        // 当 sentinel 离开视口时（isIntersecting = false），说明 filterBar 已经 sticky
+        // sentinel 离开视口时 isIntersecting = false
         isFixed.value = !entry.isIntersecting
       })
     },
-    {
-      root: null,
-      threshold: [0],
-      rootMargin: '-50px 0px 0px 0px' // 添加偏移，避免临界抖动问题
-    }
+    { threshold: 1 }
   )
 
   if (stickySentinel.value) {
