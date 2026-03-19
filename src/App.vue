@@ -70,7 +70,7 @@
                     </span>
                   </p>
                   <h4 class="project-name">
-                    <a :href="item.url || 'javascript:;'" :target="item.url ? '_blank' : ''">
+                    <a :href="item.url || null" :target="item.url || null">
                       {{ item.name }}
                     </a>
                   </h4>

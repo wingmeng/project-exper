@@ -39,12 +39,12 @@
     outline: none;
 
     &.is-fold {
-      &:after {
+      &::after {
         transform: rotate(90deg);
       }
     }
 
-    &:after {
+    &::after {
       content: "";
       display: inline-block;
       margin-left: 0.4em;
@@ -114,24 +114,23 @@
   font-size: 1.125rem;
   color: color.adjust($highlight, $lightness: -10%);
 
-  // 非跳转链接不显示链接图标
-  &[href^="javascript:;"] {
-    cursor: default;
-    outline: none;
+  &[href] {
+    &:hover {
+      box-shadow: 0 1px;
 
-    &:after {
-      display: none;
+      &::after {transform: translate(1px, -2px);}
     }
-  }
 
-  &:after {
-    content: "";
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    margin-left: 0.5em;
-    background: url("../images/link.svg") left no-repeat;
-    background-size: 0.6em;
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      margin: 0 0 -0.25em 0.25em;
+      background: url("../images/link.svg") left no-repeat;
+      background-size: 0.6em;
+      transition: transform 0.2s;
+    }
   }
 }
 .project-info {

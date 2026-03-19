@@ -9,7 +9,7 @@ body {
   margin: 0 auto;
   background: #fff;
 
-  &:after {
+  &::after {
     content: attr(data-statement);
     position: sticky;
     bottom: 0;
