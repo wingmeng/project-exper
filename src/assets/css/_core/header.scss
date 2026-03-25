@@ -9,18 +9,21 @@ body {
   margin: 0 auto;
   background: #fff;
 
-  &::after {
-    content: attr(data-statement);
+  > .statement {
     position: sticky;
     bottom: 0;
-    display: block;
-    padding: 1em 0;
+    padding: 0.5rem;
     margin-top: 1rem;
     text-align: center;
     font-size: 12px;
     color: #888;
     background: #fff;
     border-top: 1px dashed $box-border;
+
+    > p {
+      display: inline-block;
+      text-align: left;
+    }
   }
 }
 

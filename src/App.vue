@@ -1,6 +1,5 @@
 <template>
-  <div class="mainbox"
-        data-statement="ℹ️ 本页面所涉项目信息均已做脱敏处理，不涉及任何保密或敏感内容。项目描述仅用于展示个人技术能力，不代表原雇主观点或产品现状。">
+  <div class="mainbox">
     <h1 class="main-title">项目看板</h1>
     <div ref="stickySentinel"></div>
     <div ref="filterBar" class="filter-bar" :class="{ fixed: isFixed }">
@@ -105,6 +104,9 @@
         </template>
       </div>
     </section>
+    <div class="statement">
+      <p>ℹ️ 本页面所涉项目信息均已做脱敏处理，不涉及任何保密或敏感内容。项目描述仅用于展示个人技术能力，不代表原雇主观点或产品现状。</p>
+    </div>
   </div>
   <!-- SVG图标内联 -->
   <div v-html="svgIcons" style="display: none;"></div>
