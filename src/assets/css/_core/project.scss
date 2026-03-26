@@ -7,6 +7,7 @@
     position: absolute;
     top: 0;
     left: $left-space-md + $icon-size-md;
+    z-index: 1;
     width: 2px;
     height: 100%;
     background: $highlight;
@@ -57,20 +58,22 @@
 }
 
 .project-list {
-  border-top: 1px dashed $box-border;
-
   > li {
     position: relative;
     display: grid;
     grid-template-columns: ($left-space-md - 5px) 1fr;
     gap: 0 math.div($left-space-md + $icon-size-md, 2);
-    margin: 1em 0;
+    padding: 0.5em 1em 1em 0;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(#000, 0.15);
 
     &::before {
       content: "";
       position: absolute;
-      top: 12px;
+      top: calc(1em + 4px);
       left: $left-space-md + $icon-size-md + 1px;
+      z-index: 1;
       width: 10px;
       height: 10px;
       transform: translateX(-50%);
@@ -88,6 +91,8 @@
       text-align: right;
       white-space: nowrap;
     }
+
+    + li {margin-top: 8px;}
   }
 
   .label-base {
