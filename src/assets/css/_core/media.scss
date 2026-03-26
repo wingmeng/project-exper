@@ -39,23 +39,23 @@ html {font-size: 16px;}
 @media screen and (max-width: 500px) {
   .project {
     &::before {
-      left: $left-space-xs + $icon-size-sm;
+      left: $icon-size-sm;
     }
 
-    > h2 {
-      left: $left-space-xs;
-    }
+    > h2 {left: 0;}
   }
 
   .year {width: auto;}
 
+  .filter-bar > .section > h2 {border-radius: 0;}
+
   .project-list {
     > li {
       grid-template-columns: auto;
-      padding-left: $left-space-xs + $icon-size-sm + $gutter-md;
+      padding-left: $left-space-xs + $icon-size-sm + $gutter-sm;
 
       &::before {
-        left: $left-space-xs + $icon-size-sm + 1px;
+        left: $icon-size-sm + 1px;
       }
 
       > p {
@@ -66,11 +66,11 @@ html {font-size: 16px;}
     }
   }
 
-  .category-label {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
+  .project-info {
+    order: 5;
+    grid-template-columns: 1fr;
+    padding-left: 1em;
 
-  .project-info {order: 5;}
+    > dt {margin-left: -1em;}
+  }
 }
